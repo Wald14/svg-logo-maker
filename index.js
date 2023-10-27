@@ -4,7 +4,7 @@ const fs = require('fs');
 const {generateSVG} = require('./lib/shapes.js')
 
 // Add package to allow a limit to the string length that inquirer accepts
-//  https://www.npmjs.com/package/inquirer-maxlength-input-prompt
+// https://www.npmjs.com/package/inquirer-maxlength-input-prompt
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
