@@ -3,24 +3,33 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const {generateSVG} = require('./lib/shapes.js')
 
-// Add package to allow a limit to the string length that inquirer accepts
-// https://www.npmjs.com/package/inquirer-maxlength-input-prompt
-const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
-inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
-
 
 // Questions for user
 const questions = [
   {
     type: 'maxlength-input',
-    message: 'Enter up to 3 characters',
+    message: 'Enter up to 3 characters:',
     name: 'chars',
-    maxLength: 3
+    validate: charlength => {
+      if (charlength.length < 4 && charlength.length > 0) {
+        return true
+      } else {
+        console.log('Please enter 1-3 characters')
+      }
+    }
   },
   {
     type: 'input',
     message: 'What color do you want the characters?',
-    name: 'charsColor'
+    name: 'charsColor',
+    validate: charsColor => {
+      if (charsColor) {
+        return true;
+      } else {
+        console.log('Please enter a color')
+        return false;
+      }
+    }
   },
   {
     type: 'list',
