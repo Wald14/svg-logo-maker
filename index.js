@@ -58,12 +58,12 @@ function writeToSVG(filename, svgCode){
 
 
 //  Function that initializes the app
-function init() {
-  inquirer.prompt(questions)
-  .then(answers => {
-    let svgCode = generateSVG(answers);
-    writeToSVG('./new_SVG_file/logo.svg', svgCode)
-  })
+async function init() {
+  const answers = await inquirer.prompt(questions)
+  let svgCode = generateSVG(answers);
+  writeToSVG('./new_SVG_file/logo.svg', svgCode)
+  console.log("Generated logo.svg")
 }
+
 
 init();
