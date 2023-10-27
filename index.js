@@ -1,7 +1,7 @@
-// Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {generateSVG} = require('./lib/shapes.js')
+const {generateSVG} = require('./lib/generateSVG.js')
 
 
 // Questions for user
@@ -14,22 +14,14 @@ const questions = [
       if (charlength.length < 4 && charlength.length > 0) {
         return true
       } else {
-        console.log('Please enter 1-3 characters')
+        console.log('Try again, only enter 1-3 characters')
       }
     }
   },
   {
     type: 'input',
-    message: 'What color do you want the characters?',
+    message: 'Enter what color do you want the characters to be by color keyword or hexadecimal?',
     name: 'charsColor',
-    validate: charsColor => {
-      if (charsColor) {
-        return true;
-      } else {
-        console.log('Please enter a color')
-        return false;
-      }
-    }
   },
   {
     type: 'list',
@@ -52,7 +44,7 @@ const questions = [
   },
   {
     type: 'input',
-    message: 'What color do you want the shape to be?',
+    message: 'Enter what color do you want the shape to be by color keyword or hexadecimal?',
     name: 'shapeColor' 
   }
 ]
